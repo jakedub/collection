@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <h1>Input Form</h1>
+  <form action="/" method="post">
+    <fieldset>
+    <legend>Basics</legend>
+    <input type="text" name="name" required/>
+    <p>Select the Source of Book</p>
+    <label for="online">Online</label>
+    <input type="radio" name="source" id="online" value="online" />
+    <label for="print">Print</label>
+    <input type="radio" name="source" id="print" value="print" />
+    </fieldset>
+    <fieldset>
+      <legend>Version</legend>
+      <input type="number" name="issue" />
+      <input type="date" name="print" />
+      <input type="number" name="volume" />
+      <input type="text" name="writer" required />
+      <input type="text" name="artist" required />
+      <input type="text" name="good" />
+      <input type="text" name="bad" />
+      <input type="Boolean" name="firstAppearance" />
+    </fieldset>
+    <fieldset>
+      <legend>Gradient</legend>
+      <input type="number" name="grade" required />
+      <input type="text" name="checker" required />
+      <label for="comments">Comments:</label>
+      <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+      <input type="Boolean" name="artistsig" />
+      <input type="Boolean" name="writersig" />
+    </fieldset>
+    <button type="submit">Create</button>
+  </form>
+  </html>
+</body>
 
-  </body>
-</html>
+
+<!--
+2. issue down needs own grouping of version
+3. characters needs grouped
+4. Characters for good through firstAppearance
+
+-->
