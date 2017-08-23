@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+  <link href="main.css" />
 </head>
 <body>
   <h1>Input Form</h1>
@@ -18,33 +19,34 @@
     </fieldset>
     <fieldset>
       <legend>Version</legend>
-      <input type="number" name="issue" />
-      <input type="date" name="print" />
-      <input type="number" name="volume" />
-      <input type="text" name="writer" required />
-      <input type="text" name="artist" required />
-      <input type="text" name="good" />
-      <input type="text" name="bad" />
-      <input type="Boolean" name="firstAppearance" />
+      <label for="issue">Issue</label>
+      <input type="number" name="issue" /> <br />
+      <label for="print">Print Date</label>
+      <input type="date" name="print" /> <br />
+      <label for="volume">Volume Number</label>
+      <input type="number" name="volume" /> <br />
+      <label for="writer">Writer</label>
+      <input type="text" name="writer" required /> <br />
+      <label for="artist">Artist</label>
+      <input type="text" name="artist" required /> <br />
+      <textarea name="good" id="good" cols="30" rows="10" placeholder="Good Characters"></textarea><br />
+      <textarea name="bad" id="bad" cols="30" rows="10" placeholder="Bad Characters"></textarea><br />
+      <label for="firstAppearance">First Appearance?</label>
+      <input type="Boolean" name="firstAppearance" placeholder="True/False"/><br />
     </fieldset>
     <fieldset>
       <legend>Gradient</legend>
-      <input type="number" name="grade" required />
-      <input type="text" name="checker" required />
-      <label for="comments">Comments:</label>
-      <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
-      <input type="Boolean" name="artistsig" />
+      <label for="grade">Grade Number</label>
+      <input type="number" name="grade" required /><br />
+      <label for="checker">Grader/Checker</label>
+      <input type="text" name="checker" required /><br />
+      <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Comments"></textarea><br />
+      <label for="artistsig">Artist Signed?</label>
+      <input type="Boolean" name="artistsig" /><br />
+      <label for="writersig">Writer Signed?</label>
       <input type="Boolean" name="writersig" />
     </fieldset>
-    <button type="submit">Create</button>
+    <button type="submit" name="marked">Create</button>
   </form>
   </html>
 </body>
-
-
-<!--
-2. issue down needs own grouping of version
-3. characters needs grouped
-4. Characters for good through firstAppearance
-
--->
