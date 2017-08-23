@@ -8,12 +8,13 @@
   <header>
     <h1>This is the header</h1>
   </header>
-  <form action="/completed" method="post">
-    <ul>
-      {{#data}}
-      {{.}}
-      {{/data}}
-    </ul>
-  </form>
+  <ul>
+    {{#data}}
+    <li>Name:{{name}}</li>
+    {{/data}}
+    <footer>
+      <h1>This is a footer</h1>
+    </footer>
+  </ul>
 </body>
 </html>
