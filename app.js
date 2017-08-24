@@ -93,10 +93,44 @@ app.get("/completed", function(req, res){
     // db.close();
   });
 
-app.get("/edit", function(req,res){
-  books.findByName({name: req.params.name},
-  )
-})
+  app.post("/edit", function(req, res) {
+    MongoClient.connect(url, function(err, db) {
+      console.log("Edit the Collection");
+      Book.updateOne({name: req.params.name}, {$set: {
+        name: req.body.name,
+        source: [{
+          online: req.body.online,
+          print: req.body.print
+        }],
+        version: [{
+          issue: req.body.issue,
+          print: req.body.print,
+          volume: req.body.volume,
+          writer: req.body.writer,
+          artist: req.body.artist,
+          characters: [{
+            good: req.body.good,
+            bad: req.body.bad,
+            firstAppearance: req.body.firstAppearance
+          }]
+        }],
+        gradient: [{
+          grade: req.body.grade,
+          checker: req.body.checker,
+          comments: req.body.comments,
+          signatures: [{
+            artist: req.body.artist,
+            writer: req.body.writer
+          }]
+        }]
+        {$push: {issue: req.body.issue}}});
+      .then(function() {
+        console.log("Present");
+        res.redirect("/completed");
+        db.close();
+      });
+    });
+  });
 
   app.listen(3000, function () {
     console.log('Wolverines!!!');

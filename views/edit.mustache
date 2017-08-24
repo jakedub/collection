@@ -5,6 +5,46 @@
     <title>Edit</title>
   </head>
   <body>
-
+    <form action="/edit" method="post">
+    <fieldset>
+    <legend>Basics</legend>
+    <input type="text" name="name" placeholder="name" required/>
+    <p>Select the Source of Book</p>
+    <label for="online">Online</label>
+    <input type="radio" name="source" id="online" value="online" />
+    <label for="print">Print</label>
+    <input type="radio" name="source" id="print" value="print" />
+    </fieldset>
+    <fieldset>
+      <legend>Version</legend>
+      <label for="issue">Issue</label>
+      <input type="number" name={{issue}} /> <br />
+      <label for="print">Print Date</label>
+      <input type="date" name={{print}} /> <br />
+      <label for="volume">Volume Number</label>
+      <input type="number" name={{volume}} /> <br />
+      <label for="writer">Writer</label>
+      <input type="text" name={{writer}}required /> <br />
+      <label for="artist">Artist</label>
+      <input type="text" name={{artist}} required /> <br />
+      <textarea name={{good}} id="good" cols="30" rows="10" placeholder="Good Characters"></textarea><br />
+      <textarea name={{bad}} id="bad" cols="30" rows="10" placeholder="Bad Characters"></textarea><br />
+      <label for="firstAppearance">First Appearance?</label>
+      <input type="Boolean" name={{firstAppearance}} placeholder="True/False"/><br />
+    </fieldset>
+    <fieldset>
+      <legend>Gradient</legend>
+      <label for="grade">Grade Number</label>
+      <input type="number" name={{grade}} required /><br />
+      <label for="checker">Grader/Checker</label>
+      <input type="text" name={{checker}} required /><br />
+      <textarea name={{comments}} id="comments" cols="30" rows="10" placeholder="Comments"></textarea><br />
+      <label for="artistsig">Artist Signed?</label>
+      <input type="Boolean" name={{artistsig}} /><br />
+      <label for="writersig">Writer Signed?</label>
+      <input type="Boolean" name={{writersig}} />
+    </fieldset>
+    <button type="submit" name="marked">Edit Save</button>
+  </form>
   </body>
 </html>
