@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Completed Form</title>
+  <link rel="stylesheet" href="main.css" >
 </head>
 <body>
   <header>
@@ -10,11 +11,28 @@
   </header>
   <ul>
     {{#data}}
-    <li>Name:{{name}}</li>
+    <li>
+      <a href="/edit">Click Here to Edit</a>
+      <span class="main">Comic Book Name:</span> {{name}}
+      <br />
+      {{#version}}
+      Issue Number: {{issue}} <br />
+      Print Date: {{print}} <br />
+      Volume Number: {{volume}} <br />
+      Writer: {{writer}} <br />
+      Artist: {{artist}} <br /> <br />
+      {{/version}}
+      <span class="main">Grading Results</span> <br /> <br />
+      {{#gradient}}
+      Grade: {{grade}}<br />
+      Reviewer: {{checker}}<br />
+      Comments: {{comments}} <br />
+      {{#signatures}}
+      Signatures: {{artist}}, {{writer}}
+      {{/signatures}}
+      {{/gradient}}
+    </li>
     {{/data}}
-    <footer>
-      <h1>This is a footer</h1>
-    </footer>
   </ul>
 </body>
 </html>

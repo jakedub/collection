@@ -82,16 +82,21 @@ app.post("/", function(req,res){
 });
 
 app.get("/completed", function(req, res){
-  MongoClient.connect(url)
-  .then(function(db){
-    return db.collection("books").find().toArray(function(err, doc){
-      console.log(docs);
-      res.render("completed", {data:doc});
-    });
-    db.close();
+  return Book.find()
+  .then(function(books){
+  res.render("completed", {data: books})
+  })
+  // MongoClient.connect(url)
+  // .then(function(db){
+  //   return db.collection("books").find().toArray(function(err, doc){
+  //     console.log(docs)
+    // db.close();
   });
-});
 
+app.get("/edit", function(req,res){
+  books.findByName({name: req.params.name},
+  )
+})
 
   app.listen(3000, function () {
     console.log('Wolverines!!!');
