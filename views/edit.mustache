@@ -5,7 +5,7 @@
     <title>Edit</title>
   </head>
   <body>
-    <form action="/edit" method="post">
+    <form action="/edit/{{name}}/edit" method="post">
     <fieldset>
     <legend>Basics</legend>
     <input type="text" name="name" placeholder="name" required/>
@@ -18,7 +18,7 @@
     <fieldset>
       <legend>Version</legend>
       <label for="issue">Issue</label>
-      <input type="number" name={{issue}} /> <br />
+      <input type="number" name="issue" value={{issue}} /> <br />
       <label for="print">Print Date</label>
       <input type="date" name={{print}} /> <br />
       <label for="volume">Volume Number</label>

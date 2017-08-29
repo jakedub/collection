@@ -12,7 +12,6 @@
   <ul>
     {{#data}}
     <li>
-      <a href="/edit">Click Here to Edit</a>
       <span class="main">Comic Book Name:</span> {{name}}
       <br />
       {{#version}}
@@ -30,9 +29,8 @@
       {{#signatures}}
       Signatures: {{artist}}, {{writer}}
       {{/signatures}}
-      {{/gradient}}
-    </li>
-    {{/data}}
-  </ul>
-</body>
+      {{/gradient}} <br />
+      <a class="updates" href="/edit/{{name}}"><button type="button" name="edit">Edit</button></a>
+      <a class="updates" href="/delete/{{_id}}"><button type="button" name="delete">Delete</button></a>
+    </body>
 </html>
