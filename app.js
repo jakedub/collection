@@ -46,11 +46,11 @@ app.get("/edit/:name", function(req, res) {
   })
 });
 
-app.post("/edit/:name/edit", function(req, res) {
-  MongoClient.connect(url, function(err, db) {
-    console.log("Edit the Collection");
-    Book.updateOne({name: req.params.name}, {$set: {
-      name: req.body.name,
+app.post("/edit/:name/edit", function (req,res){
+  MongoClient.connect(url, function(db){
+    console.log("Does this work");
+    db.collections("books").updateOne({name: req.params.name}, {set:
+      {name: req.body.name,
       source: [{
         online: req.body.online,
         print: req.body.print
@@ -76,14 +76,14 @@ app.post("/edit/:name/edit", function(req, res) {
           writer: req.body.writer
         }]
       }]
-      {$push: {[version: issue]: req.body.issue}}});
+    });
     .then(function() {
       console.log("Present");
       res.redirect("/completed");
       db.close();
     })
   })
-});
+})
 
 //unsaved model that's being saved
 // Book.create({name: "Amazing Spider-Man"})
@@ -137,52 +137,7 @@ app.get("/completed", function(req, res){
   .then(function(books){
   res.render("completed", {data: books})
   })
-  // MongoClient.connect(url)
-  // .then(function(db){
-  //   return db.collection("books").find().toArray(function(err, doc){
-  //     console.log(docs)
-    // db.close();
-  });
 
-//editing issues
-  // app.post("/edit", function(req, res) {
-  //   MongoClient.connect(url, function(err, db) {
-  //     console.log("Edit the Collection");
-  //     Book.updateOne({name: req.params.name}, {$set: {
-  //       name: req.body.name,
-  //       source: [{
-  //         online: req.body.online,
-  //         print: req.body.print
-  //       }],
-  //       version: [{
-  //         issue: req.body.issue,
-  //         print: req.body.print,
-  //         volume: req.body.volume,
-  //         writer: req.body.writer,
-  //         artist: req.body.artist,
-  //         characters: [{
-  //           good: req.body.good,
-  //           bad: req.body.bad,
-  //           firstAppearance: req.body.firstAppearance
-  //         }]
-  //       }],
-  //       gradient: [{
-  //         grade: req.body.grade,
-  //         checker: req.body.checker,
-  //         comments: req.body.comments,
-  //         signatures: [{
-  //           artist: req.body.artist,
-  //           writer: req.body.writer
-  //         }]
-  //       }]
-  //       {$push: {issue: req.body.issue}}});
-  //     .then(function() {
-  //       console.log("Present");
-  //       res.redirect("/completed");
-  //       db.close();
-  //     });
-  //   });
-  // });
 
 //creates a hashed password. that being the password set for all the robots
 app.get("/", function(req, res){
@@ -195,8 +150,8 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", function(req,res){
-  let username = req.body.username
-  let password = req.body.password
+  req.session.username = req.body.username
+  req.session.password = req.body.password
   MongoClient.connect(url)
   .then(function functionName(db){
     db.collection("users")
@@ -215,3 +170,9 @@ app.post("/login", function(req,res){
   app.listen(3000, function () {
     console.log('Wolverines!!!');
   });
+
+//logging out
+app.get("/logout", function(req,res) {
+  req.session.destroy();
+  res.redirect("/");
+})
